@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghalaya - Abode of Clouds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Italiana&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mist-white: #f7f9f7;
+            --cloud-gray: #e3e8e3;
+            --forest-green: #2d5016;
+            --deep-green: #1a3409;
+            --moss: #4a6741;
+            --rain-blue: #7fa99b;
+            --gold: #c9a961;
+            --shadow: rgba(29, 52, 9, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, var(--mist-white) 0%, var(--cloud-gray) 100%);
+            color: var(--deep-green);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Animated background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(127, 169, 155, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(74, 103, 65, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: breathe 15s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(127, 169, 155, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, -50px) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Italiana', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 400;
+            color: var(--forest-green);
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(127, 169, 155, 0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--moss);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s ease-out 0.3s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--forest-green);
+            color: var(--mist-white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 2px solid var(--forest-green);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1.2s ease-out 0.6s backwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--deep-green);
+            border-color: var(--gold);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Itinerary Section */
+        .itinerary-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Italiana', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--forest-green);
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--moss);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        /* Timeline Design */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                var(--rain-blue) 10%, 
+                var(--rain-blue) 90%, 
+                transparent 100%);
+        }
+
+        .day-card {
+            position: relative;
+            margin-bottom: 5rem;
+            opacity: 0;
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        .day-card:nth-child(1) { animation-delay: 0.2s; }
+        .day-card:nth-child(2) { animation-delay: 0.4s; }
+        .day-card:nth-child(3) { animation-delay: 0.6s; }
+        .day-card:nth-child(4) { animation-delay: 0.8s; }
+        .day-card:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .day-card:nth-child(odd) .card-content {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .day-card:nth-child(even) .card-content {
+            margin-left: 52%;
+            text-align: left;
+        }
+
+        .card-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 0;
+            box-shadow: 0 10px 40px var(--shadow);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .card-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(29, 52, 9, 0.25);
+        }
+
+        .day-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--forest-green);
+            color: var(--mist-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            z-index: 10;
+            border: 4px solid var(--mist-white);
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .day-card:nth-child(odd) .day-number {
+            top: 2rem;
+        }
+
+        .day-card:nth-child(even) .day-number {
+            top: 2rem;
+        }
+
+        .day-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .day-location {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .day-description {
+            color: var(--moss);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .day-card:nth-child(odd) .highlights {
+            justify-content: flex-end;
+        }
+
+        .highlight-tag {
+            background: linear-gradient(135deg, var(--rain-blue), var(--moss));
+            color: white;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Essential Info */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 6rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 8px 30px var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 3px solid var(--gold);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: var(--moss);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-green);
+            color: var(--cloud-gray);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .day-card:nth-child(odd) .card-content,
+            .day-card:nth-child(even) .card-content {
+                margin-left: 80px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .day-number {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .day-card:nth-child(odd) .highlights {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Meghalaya</h1>
+            <p class="subtitle">Abode of Clouds</p>
+            <a href="#itinerary" class="cta-button">Explore Journey</a>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section id="itinerary" class="itinerary-section">
+        <h2 class="section-title">Your 5-Day Journey</h2>
+        <p class="section-subtitle">Through mist-covered hills and living root bridges</p>
+
+        <div class="timeline">
+            <!-- Day 1 -->
+            <div class="day-card">
+                <div class="day-number">1</div>
+                <div class="card-content">
+                    <div class="day-location">Shillong</div>
+                    <h3 class="day-title">Arrival & City Exploration</h3>
+                    <p class="day-description">
+                        Begin your journey in Shillong, the "Scotland of the East." Visit Ward's Lake for a peaceful stroll, 
+                        explore the vibrant Police Bazaar, and witness the stunning sunset at Shillong Peak. End your day 
+                        with traditional Khasi cuisine at a local restaurant.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Ward's Lake</span>
+                        <span class="highlight-tag">Shillong Peak</span>
+                        <span class="highlight-tag">Local Cuisine</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="day-card">
+                <div class="day-number">2</div>
+                <div class="card-content">
+                    <div class="day-location">Cherrapunji</div>
+                    <h3 class="day-title">The Wettest Place on Earth</h3>
+                    <p class="day-description">
+                        Journey to Cherrapunji and witness the majestic Nohkalikai Falls, India's tallest plunge waterfall. 
+                        Explore the mysterious Mawsmai Cave and walk across the Seven Sisters Falls viewpoint. Marvel at 
+                        the endless valleys draped in clouds.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Nohkalikai Falls</span>
+                        <span class="highlight-tag">Mawsmai Cave</span>
+                        <span class="highlight-tag">Seven Sisters</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="day-card">
+                <div class="day-number">3</div>
+                <div class="card-content">
+                    <div class="day-location">Mawlynnong & Dawki</div>
+                    <h3 class="day-title">Asia's Cleanest Village</h3>
+                    <p class="day-description">
+                        Visit Mawlynnong, renowned as Asia's cleanest village, and walk across the living root bridge. 
+                        Continue to Dawki to witness the crystal-clear Umngot River where boats appear to float in air. 
+                        Experience the pristine beauty of the Indo-Bangladesh border region.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Living Root Bridge</span>
+                        <span class="highlight-tag">Dawki River</span>
+                        <span class="highlight-tag">Clean Village</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day-card">
+                <div class="day-number">4</div>
+                <div class="card-content">
+                    <div class="day-location">Nongriat</div>
+                    <h3 class="day-title">Double Decker Root Bridge Trek</h3>
+                    <p class="day-description">
+                        Embark on an adventurous trek to the famous Double Decker Living Root Bridge in Nongriat village. 
+                        Descend 3,500 steps through lush rainforest, cross crystal streams, and discover this marvel of 
+                        bioengineering. Cool off at the natural pool beneath the bridge.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">3500 Steps</span>
+                        <span class="highlight-tag">Root Bridge</span>
+                        <span class="highlight-tag">Natural Pool</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day-card">
+                <div class="day-number">5</div>
+                <div class="card-content">
+                    <div class="day-location">Elephant Falls & Departure</div>
+                    <h3 class="day-title">Final Memories</h3>
+                    <p class="day-description">
+                        Visit the enchanting Elephant Falls, a three-tiered waterfall surrounded by dense forests. 
+                        Shop for local handicrafts and bamboo products at the markets. Savor your last moments in 
+                        Meghalaya before your departure, carrying memories of clouds and cascades.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Elephant Falls</span>
+                        <span class="highlight-tag">Shopping</span>
+                        <span class="highlight-tag">Souvenirs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Essential Information -->
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-icon">🌧️</div>
+                <h3>Best Time to Visit</h3>
+                <p>October to May offers pleasant weather. June to September brings heavy monsoons and maximum waterfalls.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">🚗</div>
+                <h3>Getting Around</h3>
+                <p>Hire a private cab for comfort. Shared taxis are available but less flexible. Most roads are mountainous.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">🏨</div>
+                <h3>Accommodation</h3>
+                <p>Options range from luxury resorts to homestays. Book in advance during peak season for best choices.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">🎒</div>
+                <h3>What to Pack</h3>
+                <p>Rain gear, comfortable trekking shoes, light woolens, camera, and respect for local culture and nature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Experience the magic of Meghalaya - Where clouds meet earth</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">© 2026 Meghalaya Travel Guide</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#itinerary').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.day-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
